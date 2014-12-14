@@ -1,0 +1,113 @@
+{
+  "appName":"Esri Starter Kit",
+  "pageTitle":"Esri Starter Kit",
+  "proxy":{
+    "url":"/proxy/proxy.php",
+    "alwaysUseProxy":false
+  },
+  "widgets":[
+    {
+      "name":"map",
+      "type":"map",
+      "path":"widgets/map/map",
+      "options":{
+        "id":"map-div",
+        "saveLocationOnUnload":false,
+        "mapOptions":{
+          "center":[
+            -90.427,
+            38.63
+          ],
+          "zoom":5,
+          "showAttribution":false,
+          "sliderStyle":"large",
+          "fadeOnZoom":true
+        },
+        "webmap":{
+          "itemData":{
+            "baseMap":{
+              "baseMapLayers":[
+                {
+                  "url":"http://mkgisagsd.stlmsd.com:6080/arcgis/rest/services/CACHED/Aerial_2014/MapServer",
+                  "opacity":1,
+                  "visibility":true,
+                  "title":"Topo Basemap"
+                }
+              ]
+            },
+            "operationalLayers":[
+              {
+                "url":"http://76.103.126.196:6080/arcgis/rest/services/msd/srwo/MapServer/0",
+                "id":"workorderLayer",
+                "title":"WorkOrders",
+                "visible":true,
+                "opacity":1,
+                "layerDefinition":{
+                  "definitionExpression":"MXSTATUS = 'Open'",
+                  "drawingInfo": {
+                    "renderer": {
+                      "type": "simple",
+                      "symbol": {
+                        "type": "esriSMS",
+                        "style": "esriSMSCircle",
+                        "color": [65,123,223,255],
+                        "size": 12,
+                        "angle": 0,
+                        "xoffset": 0,
+                        "yoffset": 0,
+                        "outline": 
+                          {
+                          "color": [255,255,255,255],
+                          "width": 2
+                        }
+                      }
+                    }
+                  }
+                }
+            },
+            {
+              "url":"http://76.103.126.196:6080/arcgis/rest/services/msd/siteinspections/FeatureServer/0",
+              "id":"inspectionLayer",
+              "title":"Site Inspections",
+              "visible":true,
+              "opacity":1,
+              "mode":0,
+              "outFields":[
+                "*"
+              ]
+            }
+            ]
+          }
+        }
+      }
+  },
+  {
+    "name":"esri-locate",
+    "type":"LocateButton",
+    "path":"esri/dijit/LocateButton",
+    "node":"locateDiv",
+    "target":"map-div_root"
+  },
+  {
+    "name":"mytest",
+    "type":"MyWidget",
+    "path":"widgets/mywidget/mywidget",
+    "node":"mywidget",
+    "target":"map-div_root"
+  },
+  {
+    "name":"esri-geocoder",
+    "type":"Geocoder",
+    "path":"esri/dijit/Geocoder",
+    "node":"geocoderDiv",
+    "target":"map-div_root",
+    "options":{
+      "arcgisGeocoder":{
+        "url":"http://geocode.arcgis.com/arcgis/rest/services/World/GeocodeServer",
+        "name":"Esri World Geocoder",
+        "placeholder":"Enter address"
+      }
+    }
+  }
+  ]
+}

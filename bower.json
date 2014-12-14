@@ -1,0 +1,10 @@
+{
+  "name": "Esri-JS-xstyle",
+  "version": "0.0.1",
+  "dependencies": {
+    "xstyle": "master"
+  },
+  "resolutions": {
+    "xstyle": "master"
+  }
+}
