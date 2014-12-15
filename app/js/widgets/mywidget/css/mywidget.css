@@ -12,9 +12,7 @@
       p,
       button.btn.btn-primary (model/message) {
         on-click: model/find()
-      },
-      p,
-      => ul(model/values)
+      }
 }
 
 #footer {
