@@ -23,12 +23,11 @@ define([
 
   return declare([_WidgetBase, _TemplatedMixin], {
     templateString: template,
-    constructor: function() {
-      console.log('mywidget');
-    },
     postCreate: function() {
-      console.log('footer?', this.domNode);
-      model.setMap(this.get('map'));
+      model.setParams(lang.mixin({
+        map: this.get('map')
+      }, this.get('settings')));
+
     },
     startup: function() {
       require(['xstyle/main'], function(){});

@@ -1,4 +1,4 @@
-popup-message {
+#popup-message {
   model = module('widgets/mywidget/model');
   =>
   div.esriSimpleSlider {
@@ -7,18 +7,19 @@ popup-message {
   }
       label 'State Name',
       input.form-control[placeholder=Search...][type=text](model/value) {
-        on-change: model/updateValue(event);
         on-keyup: model/updateValue(event);
       },
       p,
       button.btn.btn-primary (model/message) {
-        on-click: model/toggle()
-      }
+        on-click: model/find()
+      },
+      p,
+      => ul(model/values)
 }
 
 #footer {
   =>
-      popup-message;
+      #popup-message;
 
   position: absolute;
   z-index: 999;
